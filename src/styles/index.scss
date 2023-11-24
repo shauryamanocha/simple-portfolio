@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@700&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #2d3142;
+  margin: 0px;
+}
+p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #2d3142;
+}
+.bold {
+  font-weight: 700;
+}
+
+#monotype {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 48px;
+}
+
+main {
+  background-color: #99e7ff;
+  background-image: radial-gradient(
+      at 95% 24%,
+      hsla(245, 68%, 69%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 48% 32%, hsla(305, 73%, 67%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 92%, hsla(338, 94%, 64%, 1) 0px, transparent 50%);
+}
+
+nav {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  a {
+    color: white;
+    margin: 0rem 1rem;
+    &::after {
+      content: "";
+      display: block;
+      background-color: white;
+      height: 3px;
+      width: 0px;
+      transition: width 0.15s ease-in-out;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  #logo {
+    background-image: url("../images/LogoMark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 3rem;
+    background-size: contain;
+    margin-right: auto;
+  }
+}
+
+.header {
+  padding: 4rem 4rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  color: #444444;
+  h1,
+  h3 {
+    mix-blend-mode: difference;
+  }
+}
+
+section {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+  flex-wrap: wrap;
+  .title,
+  .content {
+    max-width: 32rem;
+    display: flex;
+    align-items: center;
+  }
+  .title h1 {
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.1));
+  }
+}
+
+section.experience {
+  background-color: #2d3142;
+  flex-wrap: wrap-reverse;
+  .title h1,
+  ul {
+    color: white;
+  }
+
+  .title h1 {
+    filter: drop-shadow(5px 5px 0px rgba(255, 255, 255, 0.2));
+  }
+
+  li {
+    align-items: center;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      background-color: white;
+      position: absolute;
+      width: 2px;
+      top: 0px;
+      bottom: 0px;
+    }
+    &:nth-child(1)::before {
+      top: 50%;
+    }
+    &:last-child::before {
+      bottom: 50%;
+    }
+    .job {
+      padding: 3rem;
+    }
+    .job-title {
+      font-weight: 600;
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+section.resume {
+  background-color: #2d3142;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  button {
+    color: #2d3142;
+    background-color: white;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 5px;
+    transition: transform 0.1s ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  .divider {
+    width: 50%;
+    border-radius: 2px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
