@@ -135,6 +135,11 @@ section.experience {
     }
     .job {
       padding: 3rem;
+      transform-origin: 0% 50%;
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
     .job-title {
       font-weight: 600;
