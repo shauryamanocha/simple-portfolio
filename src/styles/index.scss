@@ -3,6 +3,11 @@
 * {
   font-family: "Inter", sans-serif;
 }
+@media (max-width: 768px) {
+  html {
+    font-size: 60%;
+  }
+}
 h1 {
   font-size: 6rem;
   font-weight: 700;
@@ -20,7 +25,7 @@ p {
 
 #monotype {
   font-family: "JetBrains Mono", monospace;
-  font-size: 48px;
+  font-size: 2rem;
 }
 
 main {
@@ -144,11 +149,11 @@ section.resume {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  button {
+  a {
     color: #2d3142;
     background-color: white;
     padding: 1rem;
-    font-size: 2rem;
+    font-size: 1.2rem;
     border-radius: 5px;
     transition: transform 0.1s ease-in-out;
     &:hover {

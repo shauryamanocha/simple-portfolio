@@ -2,6 +2,8 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import "../styles/index.scss";
 const IndexPage: React.FC<PageProps> = () => {
+  const openResume = () => {};
+
   return (
     <div>
       <main>
@@ -10,8 +12,8 @@ const IndexPage: React.FC<PageProps> = () => {
           <a href="https://www.linkedin.com/in/shaurya-m-89985313b/">
             LinkedIn
           </a>
-          <a href="https://github.com/shauryamanocha">Github</a>
-          <a href="">Contact</a>
+          {/* <a href="https://github.com/shauryamanocha">Github</a>
+          <a href="">Contact</a> */}
         </nav>
         <div className="header">
           <h1>Shaurya Manocha</h1>
@@ -71,7 +73,9 @@ const IndexPage: React.FC<PageProps> = () => {
       </section>
       <section className="resume">
         <div className="divider"></div>
-        <button>My Resume</button>
+        <a href="resume_shaurya_manocha.pdf" target="blank">
+          My Resume
+        </a>
       </section>
     </div>
   );
