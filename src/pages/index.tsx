@@ -16,16 +16,16 @@ const IndexPage: React.FC<PageProps> = () => {
     gsapCore.registerPlugin(ScrollTrigger);
     let ctx = gsap.context(() => {});
 
-    gsap.to(".hero-bg", {
-      y: 0.85 * ScrollTrigger.maxScroll(window),
-      ease: "none",
-      scrollTrigger: {
-        start: 0,
-        end: "max",
-        invalidateOnRefresh: true,
-        scrub: 0,
-      },
-    });
+    // gsap.to(".hero-bg", {
+    //   y: 0.85 * ScrollTrigger.maxScroll(window),
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     start: 0,
+    //     end: "max",
+    //     invalidateOnRefresh: true,
+    //     scrub: 0,
+    //   },
+    // });
 
     gsap.fromTo(
       ".skill-tag",
