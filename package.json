@@ -13,13 +13,18 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy":"gatsby build && gh-pages -d public -b production"
+    "deploy": "gatsby build && gh-pages -d public -b production"
   },
   "dependencies": {
+    "@react-spring/parallax": "^9.7.3",
+    "@react-spring/web": "^9.7.3",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.516",
     "autoprefixer": "^10.4.16",
     "gatsby": "^5.12.4",
     "gatsby-plugin-postcss": "^6.12.0",
     "gatsby-plugin-sass": "^6.12.3",
+    "gsap": "^3.12.3",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

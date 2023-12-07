@@ -1,82 +1,122 @@
-import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import "../styles/index.scss";
+import { Header } from "../components/header";
+import { config } from "@react-spring/web";
+import { skills } from "../components/skills";
+import { WorkExperience } from "../components/work-experience";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef } from "react";
+import React from "react";
+import gsapCore from "gsap/gsap-core";
+import { start } from "repl";
 const IndexPage: React.FC<PageProps> = () => {
-  const openResume = () => {};
+  const comp = useRef(null);
+  useLayoutEffect(() => {
+    gsapCore.registerPlugin(ScrollTrigger);
+    let ctx = gsap.context(() => {});
+
+    gsap.to(".hero-bg", {
+      y: 0.85 * ScrollTrigger.maxScroll(window),
+      ease: "none",
+      scrollTrigger: {
+        start: 0,
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0,
+      },
+    });
+
+    gsap.fromTo(
+      ".skill-tag",
+      { scale: 0.5, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.2,
+        ease: "power1.in",
+        stagger: 0.01,
+        scrollTrigger: {
+          trigger: "#technical-skills",
+          start: "top 75%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      "nav",
+      {
+        y: -100,
+      },
+      {
+        y: 0,
+        scrollTrigger: {
+          trigger: ".hero-bg",
+          start: "bottom top",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    return ctx.revert();
+  }, []);
 
   return (
-    <div>
-      <main>
+    <div ref={comp}>
+      <Header />
+      <div className="bg-white min-h-screen">
         <nav>
-          <span id="logo"> </span>
-          <a href="https://www.linkedin.com/in/shaurya-m-89985313b/">
-            LinkedIn
+          <span id="logo" />
+          <a
+            className="resume-nav"
+            href="resume_shaurya_manocha_winter2023.pdf"
+            target="blank"
+          >
+            My Resume
           </a>
-          {/* <a href="https://github.com/shauryamanocha">Github</a>
-          <a href="">Contact</a> */}
         </nav>
-        <div className="header">
-          <h1>Shaurya Manocha</h1>
-          <h3 id="monotype">Full Stack Developer</h3>
-        </div>
-      </main>
-      <section className="about">
-        <div className="title">
-          <h1>About Me</h1>
-        </div>
-        <div className="content">
-          <p>
-            Hey, I'm Shaurya, an experienced{" "}
-            <span className="bold">Full-Stack Developer</span> specializing in
-            web development. I've led diverse projects, including crafting
-            insurance apps and developing{" "}
-            <span className="bold">ChatGPT-powered applications.</span>{" "}
-            Currently pursuing a Degree in{" "}
-            <span className="bold">Computer Science</span> at{" "}
-            <span className="bold">McMaster University</span>. I'm passionate
-            about continuous learning and innovation.
-          </p>
-        </div>
-      </section>
-      <section className="experience">
-        <div className="content">
-          <ul>
-            <li>
-              <div className="job">
-                <div className="job-title">Deloitte, '22, '23</div>
-                <div className="job-description">
-                  Full Stack Developer, Systems Engineering
-                </div>
+        <section className="about-me">
+          <div className="xl:px-80">
+            <h2>About Me</h2>
+            <p>
+              I'm a software developer specializing in web development. With
+              experience in a wide range of stacks, I've worked in consulting
+              and as an indepedent contractor across a variety of business
+              domains.
+            </p>
+            <h4 id="technical-skills" className="my-4">
+              Technical Skills
+            </h4>
+            <div className="skill-container">
+              {skills.map((skill) => (
+                <p className="skill-tag">{skill}</p>
+              ))}
+              <span className="skill-tag"></span>
+            </div>
+          </div>
+        </section>
+        <section className="work-experience flex flex-col items-start">
+          <div className="xl:px-80">
+            <h2 className="my-10">Work Experience</h2>
+            {WorkExperience.map((work) => (
+              <div className="mb-8">
+                <h5>
+                  {work.year + " "}
+                  <span className="font-bold">{work.company}</span>
+                </h5>
+                <h6>{work.title}</h6>
               </div>
-            </li>
-            <li>
-              <div className="job">
-                <div className="job-title">Flow Digital, '23</div>
-                <div className="job-description">
-                  Full Stack Independent Contractor
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="job">
-                <div className="job-title">Deloitte, '21</div>
-                <div className="job-description">
-                  Full Stack Developer, Systems Engineering
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className="title">
-          <h1>Work Experience</h1>
-        </div>
-      </section>
-      <section className="resume">
-        <div className="divider"></div>
-        <a href="resume_shaurya_manocha.pdf" target="blank">
-          My Resume
-        </a>
-      </section>
+            ))}
+          </div>
+          <a
+            className="self-center resume-bottom"
+            href="resume_shaurya_manocha_winter2023.pdf"
+            target="blank"
+          >
+            My Resume
+          </a>
+        </section>
+      </div>
     </div>
   );
 };
